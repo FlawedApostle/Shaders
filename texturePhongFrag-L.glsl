@@ -29,13 +29,13 @@ uniform sampler2D myTexture;
 void main() {
 	/// Light Source 1 
     vec4 lightSOne_ks = vec4(0.3, 0.3, 0.3, 0.0);
-	vec4 lightSOne_kd = vec4(1.0f,0.5f,0.5f,0.0f);
+	vec4 lightSOne_kd = vec4(1.0,0.5,0.5,0.0);
 	vec4 lightSOne_ka = 0.9 * lightSOne_kd;														// Multiplying the spec by the users uniform Color
 	vec4 lightSOne_kt = texture(myTexture,textureCoords); 
 
 	/// Light Source 2 - Yellow , I made a uniform to change within OnCreate() , but it broke , I Need to go to Scott and ask him about this, please don't forget !!
 	vec4 lightSTwo_ks = vec4(0.3, 0.3, 0.3, 0.0);
-	vec4 lightSTwo_kd = vec4(0.2f,0.7f,0.7f,0.0f);
+	vec4 lightSTwo_kd = vec4(0.2,0.7,0.7,0.0);
 	vec4 lightSTwo_ka = 0.9 * lightSTwo_kd;									// Multiplying the spec by the users uniform Color
 	vec4 lightSTwo_kt = texture(myTexture,textureCoords); 
 
@@ -92,6 +92,7 @@ void main() {
 	/// Test FragColor
 	//fragColor =  (lightSTwo_ka + (diffLightTwo * lightSTwo_kd) + (spec * lightSTwo_ks)) * lightSTwo_kt;	
 	fragColor =  (AddLightsOneTwo_Ka + (combineDiffuseLights * AddLightsOneTwo_Kd) + (combineSpec * AddLightsOneTwo_Ks)) * AddLightsOneTwo_Kt;	
+
 
 
 }
